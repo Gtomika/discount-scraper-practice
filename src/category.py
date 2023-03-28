@@ -1,5 +1,6 @@
 from item import DiscountedItem
 
+
 class DiscountCategory:
 
     def __init__(self, category_name) -> None:

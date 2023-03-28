@@ -15,9 +15,7 @@ python -m pip install --upgrade pip
 Install required packages:
 
 ```
-python -m pip install requests
-python -m pip install pyyaml
-python -m pip install bs4
+python -m pip install -r requirements.txt
 ```
 
 ## Setup Gmail to be able to send your mails

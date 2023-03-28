@@ -18,7 +18,7 @@ headers = config.get_config('inputs.headers')
 print('Fetching discounts page from URL: ' + discountsUrl)
 response = requests.get(discountsUrl, timeout=10, headers=headers)
 if response.status_code != 200:
-    print('Unexpected status code from discounts page: ' + response.status_code)
+    print('Unexpected status code from discounts page: ' + str(response.status_code))
     exit(-1)
 
 soup = BeautifulSoup(response.content, 'html.parser')

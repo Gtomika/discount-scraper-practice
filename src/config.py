@@ -1,6 +1,7 @@
 import yaml
 import os
 
+
 class DiscountsConfig:
 
     def __init__(self, config_path: str) -> None:
@@ -16,12 +17,14 @@ class DiscountsConfig:
             config_value = config_value[name_part]
 
         if type(config_value) is str and config_value.startswith('env('):
-            return self.__read_env_var(config_value)
+            return read_env_var(config_value)
         return config_value
 
-    def __read_env_var(self, config_value: str) -> str:
-        env_var_name = find_between(config_value, '(', ')')
-        return os.environ.get(env_var_name)
+
+def read_env_var(config_value: str) -> str:
+    env_var_name = find_between(config_value, '(', ')')
+    return os.environ.get(env_var_name)
+
 
 def find_between(s, first, last ):
     try:

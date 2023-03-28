@@ -2,7 +2,7 @@ from category import DiscountCategory
 from bs4 import ResultSet
 
 from item import DiscountedItem
-from config import DiscountsConfig
+
 
 def process_category(category: DiscountCategory, categoryElement: ResultSet, itemClass: str):
     print('Starting to process category: ' + category.category_name)

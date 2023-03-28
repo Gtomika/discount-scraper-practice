@@ -4,6 +4,7 @@ import smtplib
 
 from config import DiscountsConfig
 
+
 class DiscountEmailSender:
 
     def __init__(self, config: DiscountsConfig) -> None:
@@ -25,7 +26,7 @@ class DiscountEmailSender:
         mail['From'] = self.__source_email
         mail['To'] = self.__target_email
         mail['Subject'] = self.__subject
-        mail.set_content(self.__compose_mail_text(categories))
+        mail.set_content(compose_mail_text(categories))
     
         with smtplib.SMTP_SSL(host='smtp.gmail.com', port=465, context=self.__ssl_context) as smtp:
             smtp.login(self.__source_email, self.__source_email_app_password)
@@ -34,9 +35,9 @@ class DiscountEmailSender:
         print(f'Email sent to {self.__target_email} about discounts!')
 
 
-    def __compose_mail_text(self, categories) -> str:
-        body = 'The following discounts were found:\n\n'
-        for category in categories:
-            body += str(category)
-        body += '\n\nThis mail was sent from Python :)'
-        return body
+def compose_mail_text(categories) -> str:
+    body = 'The following discounts were found:\n\n'
+    for category in categories:
+        body += str(category)
+    body += '\n\nThis mail was sent from Python :)'
+    return body
